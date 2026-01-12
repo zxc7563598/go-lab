@@ -6,7 +6,7 @@
 # 每个目录都可以通过 go run 单独执行，
 # Makefile 只是为了把这些实验入口集中管理。
 
-.PHONY: help struct-value return-demo semantics
+.PHONY: help struct-value return-demo semantics slice-demo
 
 # 默认命令：列出所有可用实验
 help:
@@ -18,6 +18,7 @@ help:
 	@echo "  make struct-value   # struct 的传递：值拷贝 vs 指针"
 	@echo "  make return-demo    # 值接收者 vs 指针接收者，以及返回值/指针/interface 的区别"
 	@echo "  make semantics      # & 和 * 的真实含义"
+	@echo "  make slice-demo     # slice 的底层结构：指针、长度、容量"
 	@echo ""
 
 # struct 的传递：值拷贝 vs 指针
@@ -38,3 +39,8 @@ return-demo:
 # - 解引用发生的位置
 semantics:
 	go run ./semantics
+
+# slice 的底层结构：指针、长度、容量
+slice-demo:
+	go run ./slice-demo
+
