@@ -6,7 +6,7 @@
 # 每个目录都可以通过 go run 单独执行，
 # Makefile 只是为了把这些实验入口集中管理。
 
-.PHONY: help struct-value return-demo semantics slice-demo map-demo defer-demo
+.PHONY: help struct-value return-demo semantics slice-demo map-demo defer-demo error-demo
 
 # 默认命令：列出所有可用实验
 help:
@@ -21,6 +21,7 @@ help:
 	@echo "  make slice-demo     # slice 的底层结构：指针、长度、容量"
 	@echo "  make map-demo       # map：看起来简单，实则暗雷密布"
 	@echo "  make defer-demo     # defer 与资源生命周期"
+	@echo "  make error-demo     # error：Go 的“显式异常系统”"
 	@echo ""
 
 # struct 的传递：值拷贝 vs 指针
@@ -53,3 +54,7 @@ map-demo:
 # defer 与资源生命周期
 defer-demo:
 	go run ./defer-demo
+
+# error：Go 的“显式异常系统”
+error-demo:
+	go run ./error-demo
