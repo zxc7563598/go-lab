@@ -6,7 +6,7 @@
 # 每个目录都可以通过 go run 单独执行，
 # Makefile 只是为了把这些实验入口集中管理。
 
-.PHONY: help struct-value return-demo semantics slice-demo map-demo defer-demo error-demo
+.PHONY: help struct-value return-demo semantics slice-demo map-demo defer-demo error-demo concurrency
 
 # 默认命令：列出所有可用实验
 help:
@@ -22,6 +22,7 @@ help:
 	@echo "  make map-demo       # map：看起来简单，实则暗雷密布"
 	@echo "  make defer-demo     # defer 与资源生命周期"
 	@echo "  make error-demo     # error：Go 的“显式异常系统”"
+	@echo "  make concurrency    # Go 的并发模型：从根上和 PHP 不一样”"
 	@echo ""
 
 # struct 的传递：值拷贝 vs 指针
@@ -58,3 +59,7 @@ defer-demo:
 # error：Go 的“显式异常系统”
 error-demo:
 	go run ./error-demo
+
+# Go 的并发模型：从根上和 PHP 不一样
+concurrency:
+	go run ./concurrency
