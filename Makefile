@@ -6,7 +6,7 @@
 # 每个目录都可以通过 go run 单独执行，
 # Makefile 只是为了把这些实验入口集中管理。
 
-.PHONY: help struct-value return-demo semantics slice-demo map-demo defer-demo error-demo concurrency channel-demo context-demo
+.PHONY: help struct-value return-demo semantics slice-demo map-demo defer-demo error-demo concurrency channel-demo context-demo concurrent-safety
 
 # 默认命令：列出所有可用实验
 help:
@@ -15,16 +15,17 @@ help:
 	@echo ""
 	@echo "可用命令:"
 	@echo ""
-	@echo "  make struct-value   # struct 的传递：值拷贝 vs 指针"
-	@echo "  make return-demo    # 值接收者 vs 指针接收者，以及返回值/指针/interface 的区别"
-	@echo "  make semantics      # & 和 * 的真实含义"
-	@echo "  make slice-demo     # slice 的底层结构：指针、长度、容量"
-	@echo "  make map-demo       # map：看起来简单，实则暗雷密布"
-	@echo "  make defer-demo     # defer 与资源生命周期"
-	@echo "  make error-demo     # error：Go 的“显式异常系统”"
-	@echo "  make concurrency    # Go 的并发模型：从根上和 PHP 不一样”"
-	@echo "  make channel-demo   # channel：通信，而不是共享内存"
-	@echo "  make context-demo   # context：协程的生命周期管理"
+	@echo "  make struct-value        # struct 的传递：值拷贝 vs 指针"
+	@echo "  make return-demo         # 值接收者 vs 指针接收者，以及返回值/指针/interface 的区别"
+	@echo "  make semantics           # & 和 * 的真实含义"
+	@echo "  make slice-demo          # slice 的底层结构：指针、长度、容量"
+	@echo "  make map-demo            # map：看起来简单，实则暗雷密布"
+	@echo "  make defer-demo          # defer 与资源生命周期"
+	@echo "  make error-demo          # error：Go 的“显式异常系统”"
+	@echo "  make concurrency         # Go 的并发模型：从根上和 PHP 不一样”"
+	@echo "  make channel-demo        # channel：通信，而不是共享内存"
+	@echo "  make context-demo        # context：协程的生命周期管理"
+	@echo "  make concurrent-safety   # 并发安全：不是所有地方都要锁"
 	@echo ""
 
 # struct 的传递：值拷贝 vs 指针
@@ -73,3 +74,7 @@ channel-demo:
 # context：协程的生命周期管理
 context-demo:
 	go run ./context-demo
+
+# 并发安全：不是所有地方都要锁
+concurrent-safety:
+	go run ./concurrent-safety
