@@ -6,7 +6,7 @@
 # 每个目录都可以通过 go run 单独执行，
 # Makefile 只是为了把这些实验入口集中管理。
 
-.PHONY: help struct-value return-demo semantics slice-demo map-demo defer-demo error-demo concurrency channel-demo
+.PHONY: help struct-value return-demo semantics slice-demo map-demo defer-demo error-demo concurrency channel-demo context-demo
 
 # 默认命令：列出所有可用实验
 help:
@@ -24,6 +24,7 @@ help:
 	@echo "  make error-demo     # error：Go 的“显式异常系统”"
 	@echo "  make concurrency    # Go 的并发模型：从根上和 PHP 不一样”"
 	@echo "  make channel-demo   # channel：通信，而不是共享内存"
+	@echo "  make context-demo   # context：协程的生命周期管理"
 	@echo ""
 
 # struct 的传递：值拷贝 vs 指针
@@ -68,3 +69,7 @@ concurrency:
 # channel：通信，而不是共享内存
 channel-demo:
 	go run ./channel-demo
+
+# context：协程的生命周期管理
+context-demo:
+	go run ./context-demo
