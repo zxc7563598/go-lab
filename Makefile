@@ -6,7 +6,7 @@
 # 每个目录都可以通过 go run 单独执行，
 # Makefile 只是为了把这些实验入口集中管理。
 
-.PHONY: help struct-value return-demo semantics slice-demo map-demo defer-demo error-demo concurrency channel-demo context-demo concurrent-safety
+.PHONY: help struct-value return-demo semantics slice-demo map-demo defer-demo error-demo concurrency channel-demo context-demo concurrent-safety concurrent-error
 
 # 默认命令：列出所有可用实验
 help:
@@ -26,6 +26,7 @@ help:
 	@echo "  make channel-demo        # channel：通信，而不是共享内存"
 	@echo "  make context-demo        # context：协程的生命周期管理"
 	@echo "  make concurrent-safety   # 并发安全：不是所有地方都要锁"
+	@echo "  make concurrent-error    # 并发错误：必须亲手踩过的坑"
 	@echo ""
 
 # struct 的传递：值拷贝 vs 指针
@@ -78,3 +79,7 @@ context-demo:
 # 并发安全：不是所有地方都要锁
 concurrent-safety:
 	go run ./concurrent-safety
+
+# 并发错误：必须亲手踩过的坑
+concurrent-error:
+	go run ./concurrent-error
