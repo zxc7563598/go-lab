@@ -6,7 +6,7 @@
 # 每个目录都可以通过 go run 单独执行，
 # Makefile 只是为了把这些实验入口集中管理。
 
-.PHONY: help struct-value return-demo semantics slice-demo map-demo defer-demo error-demo concurrency channel-demo context-demo concurrent-safety concurrent-error life-cycle-01
+.PHONY: help struct-value return-demo semantics slice-demo map-demo defer-demo error-demo concurrency channel-demo context-demo concurrent-safety concurrent-error life-cycle-01 life-cycle-02 life-cycle-03 life-cycle-04
 
 # 默认命令：列出所有可用实验
 help:
