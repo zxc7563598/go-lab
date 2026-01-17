@@ -6,7 +6,7 @@
 # 每个目录都可以通过 go run 单独执行，
 # Makefile 只是为了把这些实验入口集中管理。
 
-.PHONY: help struct-value return-demo semantics slice-demo map-demo defer-demo error-demo concurrency channel-demo context-demo concurrent-safety concurrent-error
+.PHONY: help struct-value return-demo semantics slice-demo map-demo defer-demo error-demo concurrency channel-demo context-demo concurrent-safety concurrent-error life-cycle-01
 
 # 默认命令：列出所有可用实验
 help:
@@ -25,8 +25,12 @@ help:
 	@echo "  make concurrency         # Go 的并发模型：从根上和 PHP 不一样”"
 	@echo "  make channel-demo        # channel：通信，而不是共享内存"
 	@echo "  make context-demo        # context：协程的生命周期管理"
-	@echo "  make concurrent-safety   # 并发安全：不是所有地方都要锁"
+	@echo "  make concurrent-safety   # 并发安全：不是所有地方都要锁" 
 	@echo "  make concurrent-error    # 并发错误：必须亲手踩过的坑"
+	@echo "  make life-cycle-01       # Go Web 中的生命周期意识 - HTTP 请求在 Go 中的完整生命周期"
+	@echo "  make life-cycle-02       # Go Web 中的生命周期意识 - handler、middleware、service 的职责边界"
+	@echo "  make life-cycle-03       # request 级资源的创建与释放"
+	@echo "  make life-cycle-04       # Web 中的并发模型与 goroutine 数量控制"
 	@echo ""
 
 # struct 的传递：值拷贝 vs 指针
@@ -83,3 +87,19 @@ concurrent-safety:
 # 并发错误：必须亲手踩过的坑
 concurrent-error:
 	go run ./concurrent-error
+
+# Go Web 中的生命周期意识
+life-cycle-01:
+	go run ./life-cycle/request-lifecycle
+
+# handler、middleware、service 的职责边界
+life-cycle-02:
+	go run ./life-cycle/handler-middleware-service
+
+# request 级资源的创建与释放
+life-cycle-03:
+	go run ./life-cycle/request-scoped-resources
+
+# Web 中的并发模型与 goroutine 数量控制
+life-cycle-04:
+	go run ./life-cycle/web-concurrency-control
