@@ -6,7 +6,7 @@
 # 每个目录都可以通过 go run 单独执行，
 # Makefile 只是为了把这些实验入口集中管理。
 
-.PHONY: help struct-value return-demo semantics slice-demo map-demo defer-demo error-demo concurrency channel-demo context-demo concurrent-safety concurrent-error life-cycle-01 life-cycle-02 life-cycle-03 life-cycle-04 webhook shell
+.PHONY: help struct-value return-demo semantics slice-demo map-demo defer-demo error-demo concurrency channel-demo context-demo concurrent-safety concurrent-error life-cycle-01 life-cycle-02 life-cycle-03 life-cycle-04 webhook shell worker-pool
 
 # 默认命令：列出所有可用实验
 help:
@@ -33,6 +33,7 @@ help:
 	@echo "  make life-cycle-04       # Web 中的并发模型与 goroutine 数量控制"
 	@echo "  make webhook             # 并发 webhook 接收与处理服务"
 	@echo "  make shell               # 并发执行 shell 的任务调度器"
+	@echo "  make worker-pool         # Worker Pool 的设计与实现"
 	@echo ""
 
 # struct 的传递：值拷贝 vs 指针
@@ -113,3 +114,7 @@ webhook:
 # 并发执行 shell 的任务调度器
 shell:
 	go run ./shell
+
+# Worker Pool 的设计与实现
+worker-pool:
+	go run ./worker-pool
